@@ -1,0 +1,140 @@
+/*================================================================
+    language-select.scss
+================================================================*/
+$lang-easing: cubic-bezier(0.5, 2, 0.5, 0.75);
+$lang-font-size: 16px;
+$btn-padding-h: 2px;
+$btn-padding-v: 2px;
+$option-padding-h: 16px;
+$option-padding-v: 10px;
+
+.lang-select {
+	display: inline-block;
+	position: relative;
+	font-size: $lang-font-size;
+	// height: 55px;
+
+	.lang-legend {
+		margin: 0;
+		width: unset;
+		min-width: 35px;
+		line-height: $lang-font-size;
+		padding: $btn-padding-h $btn-padding-v;
+		border: none;
+		border-bottom: 2px solid $color-white;
+		@include font(
+			$size: $lang-font-size,
+			$weight: 600,
+			$family: $font-family-base
+		);
+		text-align: left;
+		cursor: pointer;
+		background: none;
+		outline: none;
+		z-index: 2;
+		color: $color-white;
+		@include cubic-transition(
+			$delay: 0,
+			$duration: 300ms,
+			$property: (
+				all,
+			)
+		);
+		text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+
+		&:after {
+			content: "▾";
+			position: absolute;
+			right: -2px;
+			top: 2px;
+		}
+	}
+
+	.lang-dropdown-options {
+		position: absolute;
+		left: 0 - $option-padding-h;
+		top: 0 - $option-padding-v;
+		margin: 0;
+		padding: 0;
+		box-shadow: 0 2px 4px rgba(black, 0.24);
+		list-style: none;
+		text-shadow: none;
+		line-height: $lang-font-size;
+
+		pointer-events: none;
+		opacity: 0;
+		transform: scale(0.8);
+		transform-origin: 50% 0;
+		transition: opacity 0.1s $lang-easing, transform 0.3s $lang-easing;
+
+		&.open {
+			pointer-events: initial;
+			opacity: 1;
+			transform: scale(1);
+		}
+
+		input {
+			display: none;
+		}
+
+		label {
+			margin: 0;
+			padding-left: $btn-padding-h + $option-padding-h;
+			padding-right: $btn-padding-h + $option-padding-h;
+			padding-top: $btn-padding-v + $option-padding-v;
+			padding-bottom: $btn-padding-h + $option-padding-v;
+			width: 100%;
+			text-align: center;
+
+			cursor: pointer;
+			color: $color-link;
+			background: $color-white;
+
+			&:hover {
+				background: $color-sky-light;
+			}
+		}
+
+		input:checked + label {
+			color: black;
+		}
+	}
+}
+
+/* Page On Scroll, non-collapsed */
+@media (min-width: $screen-sm-min) {
+	.page-on-scroll .lang-select {
+		.lang-legend {
+			color: $color-heading;
+			border-color: $color-heading;
+			text-shadow: none;
+		}
+	}
+}
+
+/* Bootstrap navigation collapse */
+@media (max-width: $screen-xs-max) {
+	.lang-select {
+		.lang-legend {
+			color: $color-heading;
+			text-shadow: none;
+		}
+
+		.lang-dropdown-options {
+			overflow-x: auto;
+			width: 90vw;
+			box-shadow: none;
+			transform-origin: 0 50%;
+
+			label {
+				display: inline-block;
+				width: auto;
+			}
+
+			input:checked + label {
+				border: none;
+				border-bottom: 2px solid $color-heading;
+			}
+		}
+	}
+}

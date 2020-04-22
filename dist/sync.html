@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Rolewicz Database</title>
+</head>
+
+<body>
+	<div id="root" style="font-family: monospace;"></div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js"></script>
+	<script>
+		Tabletop.init({
+			key:
+				"https://docs.google.com/spreadsheets/d/1uixytIJj9I2PgDNAqhLyIbt3k4WlHM9QOymvCWJ5p4c/edit?usp=sharing",
+			simpleSheet: true,
+			order: "id",
+			callback: function (data) {
+				const json = JSON.stringify(data).replace(/\\n/gm, '<br>')
+				const string = "var dataText = `" + json + "`";
+				document.querySelector('#root').innerText = string
+				console.log(string);
+			},
+			error: function (err) {
+				console.log("Tabletop fetch error: " + err);
+			},
+		});
+	</script>
+</body>
+
+</html>

@@ -1,11 +1,23 @@
 {
-  "name": "rolewicz",
-  "version": "1.0.0",
-  "description": "brochure website",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Sebastian Rosloniec sebster.dev@gmail.com",
-  "license": "ISC"
+	"name": "rolewicz",
+	"version": "1.0.0",
+	"description": "Brochure website",
+	"private": true,
+	"author": "Sebastian Rosloniec sebster.dev@gmail.com",
+	"license": "ISC",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"gulp": "gulp"
+	},
+	"devDependencies": {
+		"gulp": "^3.9.1",
+		"gulp-changed": "^1.3.0",
+		"gulp-clean-css": "^2.0.10",
+		"gulp-htmlhint": "^0.3.1",
+		"gulp-rename": "^1.2.2",
+		"gulp-rtlcss": "^1.0.0",
+		"gulp-sass": "^2.3.2",
+		"gulp-uglify": "^1.5.4",
+		"pump": "^3.0.0"
+	}
 }
