@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<!-- BEGIN HEAD -->
+
+<head>
+	<meta charset="utf-8" />
+	<title>FHU Rolewicz</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+
+	<!-- redirect users with no JS -->
+	<noscript>
+		<meta content="0; URL='/noscript/'" http-equiv="refresh">
+	</noscript>
+
+	<!-- CDN -->
+	<link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+	<link href="vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+	<!-- WEBSITE STYLES -->
+	<!-- css/index.min.css -->
+	<link href="css/index.css" rel="stylesheet" type="text/css" />
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="favicon.ico" />
+</head>
+<!-- END HEAD -->
+
+<!-- BODY -->
+
+<body>
+
+	<!--========== HEADER ==========-->
+	<header id="header" class="header navbar-fixed-top">
+		<!-- Navbar -->
+		<nav class="navbar" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="menu-container">
+					<!-- Logo -->
+					<div class="logo">
+						<a class="logo-wrap" href="index.html">
+							<img class="logo-img logo-img-active" src="img/logo-blue.svg" alt="Rolewicz Logo">
+						</a>
+					</div>
+					<!-- End Logo -->
+
+					<!-- Menu Toggle -->
+					<button type="button" class="navbar-toggle">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="toggle-icon"></span>
+					</button>
+					<!-- End Menu Toggle -->
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse nav-collapse">
+					<div class="menu-container">
+						<ul class="navbar-nav navbar-nav-right">
+
+							<li class="nav-item">
+								<a class="nav-item-child nav-item-hover color-white" href="#landing" data-target="#landing">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-item-child nav-item-hover color-white" href="#about" data-target="#about">About</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-item-child nav-item-hover color-white" href="#advantages"
+									data-target="#advantages">Advantages</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-item-child nav-item-hover color-white" href="#offer" data-target="#offer">Offer</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-item-child nav-item-hover color-white" href="#contact" data-target="#contact">Contact</a>
+							</li>
+
+							<!-- Language user-select -->
+							<li class="nav-item">
+								<span class="nav-item-child color-white">
+									<form class="lang-select js-lang-select">
+										<fieldset>
+											<legend class="lang-legend js-lang-legend">en</legend>
+											<div class="lang-dropdown-options js-lang-options"></div>
+										</fieldset>
+									</form>
+								</span>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+				<!-- End Navbar Collapse -->
+			</div>
+		</nav>
+		<!-- Navbar -->
+	</header>
+	<!--========== END HEADER ==========-->
+
+	<!--========== LANDING ==========-->
+	<!-- https://pixelcog.github.io/parallax.js/ -->
+	<section id="landing" class="landing rellax-container">
+
+		<!-- bg -->
+		<div class="bg-back bg-parallax rellax" data-rellax-speed="-10"></div>
+		<div class="bg-text rellax" data-rellax-speed="-7">
+			<img class="shadowed" src="img/logo-white.svg" alt="Asentus Logo">
+		</div>
+		<div class="bg-front bg-parallax rellax" data-rellax-speed="-5"></div>
+
+		<!-- hero -->
+		<div class="container">
+			<div class="hero rellax" data-rellax-speed="4">
+				<div class="hero-logo">
+					<img class="hero-logo-img" src="img/logo-white.svg" alt="Rolewicz Logo">
+					<br>
+				</div>
+				<h1 class="hero-title">
+					<span id="landing--title-left" class="title-left"></span>
+					<span id="landing--title-right" class="title-right"></span>
+				</h1>
+				<p id="landing--slogan" class="subheading slogan margin-b-40"></p>
+				<a id="landing--cta" class="btn-theme btn-theme-sm btn-white-brd text-uppercase" href="#contact"></a>
+			</div>
+		</div>
+	</section>
+
+	<!--========== END LANDING ==========-->
+
+	<!--========== PAGE LAYOUT ==========-->
+
+	<!-- About -->
+	<section id="about" class="about">
+		<div class="content-lg container">
+			<div class="row margin-b-20">
+				<div class="col-sm-6">
+					<h2 id="about--heading"></h2>
+				</div>
+			</div>
+			<!--// end row -->
+
+			<div class="row">
+				<div class="col-sm-7 sm-margin-b-50">
+					<div class="margin-b-30">
+						<p id="about--p1"></p>
+						<p id="about--p2"></p>
+					</div>
+				</div>
+				<div class="col-sm-4 col-sm-offset-1">
+					<img class="img-responsive img-shadowed" src="img/640x380/01.jpg" alt="Our Office">
+				</div>
+			</div>
+			<!--// end row -->
+		</div>
+	</section>
+	<!-- End About -->
+
+	<!-- Advantages -->
+	<section id="advantages" class="advantages">
+		<div class="content-lg container">
+			<div class="advantages-wrap">
+				<h2 id="advantages--heading" class="advantages-heading color-white"></h2>
+				<!-- row -->
+				<div class="js-on-scroll slideIn slideInLeft" style="--index: 2">
+					<div class="advantage">
+						<div class="advantage-icon-wrap">
+							<i class="advantage-icon icon-chemistry"></i>
+						</div>
+						<div class="advantage-info">
+							<h3 id="advantages--1-h"></h3>
+							<p id="advantages--1-p" class="margin-b-5"></p>
+						</div>
+						<a class="link advantage-link component--inquire" href="#contact"></a>
+					</div>
+				</div>
+				<div class="js-on-scroll slideIn slideInLeft" style="--index: 1">
+					<div class="advantage">
+						<div class="advantage-icon-wrap">
+							<i class="advantage-icon icon-screen-tablet"></i>
+						</div>
+						<div class="advantage-info">
+							<h3 id="advantages--2-h"></h3>
+							<p id="advantages--2-p" class="margin-b-5"></p>
+						</div>
+						<a class="link advantage-link component--inquire" href="#contact"></a>
+					</div>
+				</div>
+				<div class="js-on-scroll slideIn slideInLeft" style="--index: 0">
+					<div class="advantage">
+						<div class="advantage-icon-wrap">
+							<i class="advantage-icon icon-badge"></i>
+						</div>
+						<div class="advantage-info">
+							<h3 id="advantages--3-h"></h3>
+							<p id="advantages--3-p" class="margin-b-5"></p>
+						</div>
+						<a class="link advantage-link component--inquire" href="#contact"></a>
+					</div>
+				</div>
+				<!--// end row -->
+				<!-- row -->
+
+				<div class="js-on-scroll slideIn slideInLeft" style="--index: 2">
+					<div class="advantage">
+						<div class="advantage-icon-wrap">
+							<i class="advantage-icon icon-notebook"></i>
+						</div>
+						<div class="advantage-info">
+							<h3 id="advantages--4-h"></h3>
+							<p id="advantages--4-p" class="margin-b-5"></p>
+						</div>
+						<a class="link advantage-link component--inquire" href="#contact"></a>
+					</div>
+				</div>
+				<div class="js-on-scroll slideIn slideInLeft" style="--index: 1">
+					<div class="advantage">
+						<div class="advantage-icon-wrap">
+							<i class="advantage-icon icon-speedometer"></i>
+						</div>
+						<div class="advantage-info">
+							<h3 id="advantages--5-h"></h3>
+							<p id="advantages--5-p" class="margin-b-5"></p>
+						</div>
+						<a class="link advantage-link component--inquire" href="#contact"></a>
+					</div>
+				</div>
+				<div class="js-on-scroll slideIn slideInLeft" style="--index: 0">
+					<div class="advantage">
+						<div class="advantage-icon-wrap">
+							<i class="advantage-icon icon-badge"></i>
+						</div>
+						<div class="advantage-info">
+							<h3 id="advantages--6-h">
+							</h3>
+							<p id="advantages--6-p" class="margin-b-5"></p>
+						</div>
+						<a class="link advantage-link component--inquire" href="#contact"></a>
+					</div>
+				</div>
+				<!--// end row -->
+			</div>
+		</div>
+	</section>
+	<!-- End Advantages -->
+
+	<!-- Offer -->
+	<section id="offer" class="offer">
+		<div class="content-lg container">
+
+			<div class="row margin-b-40">
+				<div class="col-sm-12">
+					<h2 id="offer--heading"></h2>
+					<p id="offer--subheading" class="subheading"></p>
+				</div>
+			</div>
+			<!--// end row -->
+
+			<div class="row margin-b-50">
+				<div class="col-sm-6 sm-margin-b-50">
+					<div class="margin-b-20">
+						<div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
+							<img class="img-responsive img-shadowed" src="img/1920x1080/21.jpg" alt="Trucks and containers">
+						</div>
+					</div>
+					<h4>
+						<a id="offer--1-h" href="#"></a>
+						<span id="offer--1-s" class="offer-subheading"></span>
+					</h4>
+					<p id="offer--1-p"></p>
+				</div>
+
+				<div class="col-sm-6 sm-margin-b-50">
+					<div class="margin-b-20">
+						<div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
+							<img class="img-responsive img-shadowed" src="img/1920x1080/16.jpg" alt="Trucks and containers">
+						</div>
+					</div>
+					<h4>
+						<a id="offer--2-h" href="#"></a>
+						<span id="offer--2-s" class="offer-subheading"></span>
+					</h4>
+					<p id="offer--2-p"></p>
+				</div>
+			</div>
+			<!--// end row -->
+
+			<div class="row ">
+				<div class="col-sm-6 sm-margin-b-50">
+					<div class="margin-b-20">
+						<div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
+							<img class="img-responsive img-shadowed" src="img/1920x1080/20.jpg" alt="Trucks and containers">
+						</div>
+					</div>
+					<h4>
+						<a id="offer--3-h" href="#"></a>
+						<span id="offer--3-s" class="offer-subheading"></span>
+					</h4>
+					<p id="offer--3-p"></p>
+				</div>
+
+				<div class="col-sm-6 sm-margin-b-50">
+					<div class="margin-b-20">
+						<div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
+							<img class="img-responsive img-shadowed" src="img/1920x1080/26.jpg" alt="Trucks and containers">
+						</div>
+					</div>
+					<h4>
+						<a id="offer--4-h" href="#"></a>
+						<span id="offer--4-s" class="offer-subheading"></span>
+					</h4>
+					<p id="offer--4-p"></p>
+				</div>
+
+			</div>
+			<!--// end row -->
+		</div>
+	</section>
+	<!-- End Offer -->
+
+	<!-- Contact -->
+	<section id="contact" class="contact">
+		<div class="content-lg container">
+			<div class="row">
+
+				<!-- Iquiry col -->
+				<div class="col-md-8">
+					<h2 id="inquiry--heading" class="color-white"></h2>
+					<form action="#">
+						<div class="row">
+							<div class="col-sm-6">
+								<input id="inquiry--pickup" type="text" name="pickup-location" autocomplete="off" required
+									class="form-control margin-b-20 enquire-input">
+								<input id="inquiry--pickup-date" type="date" name="pickup-date" autocomplete="off"
+									class="form-control margin-b-20 enquire-input">
+								<input id="inquiry--dropoff" type="text" name="drop-off-location" autocomplete="off" required
+									class="form-control margin-b-20 enquire-input">
+								<input id="inquiry--dropoff-date" type="date" name="drop-off-date" autocomplete="off"
+									class="form-control margin-b-20 enquire-input">
+								<input id="inquiry--type" type="text" name="cargo-type" autocomplete="off" required
+									class="form-control margin-b-20 enquire-input">
+								<input id="inquiry--weight" type="number" name="weight" autocomplete="off" required
+									class="form-control margin-b-20 enquire-input">
+							</div>
+							<div class="col-sm-6">
+								<input id="inquiry--name" type="text" name="name" autocomplete="on" required
+									class="form-control margin-b-20 enquire-input">
+								<input id="inquiry--tel" type="tel" name="tel" autocomplete="on"
+									class="form-control margin-b-20 enquire-input">
+								<input id="inquiry--email" type="email" name="email" autocomplete="on" required
+									class="form-control margin-b-20 enquire-input">
+								<textarea id="inquiry--description" name="description" rows="9"
+									class="form-control margin-b-30  enquire-textarea"></textarea>
+							</div>
+						</div>
+						<div class="btn-wrap">
+							<button type="submit" id="inquiry--submit"
+								class="enquire-btn btn-theme btn-theme-sm btn-base-bg"></button>
+						</div>
+					</form>
+				</div>
+				<!-- End Iquiry col -->
+
+				<!-- Contact col -->
+				<div class="col-md-4 col-info">
+					<div class="info-container">
+						<div class="info">
+							<h3 id="contact--heading" class="color-heading margin-b-30" style="text-align: center;">CONTACT</h3>
+							<p id="contact--address">
+								<b><span id="contact--address" class="contact-label"></span></b>
+								<span>
+									FHU Mirosława Rolewicz
+									ul. Śniadeckich 36/56
+									86-300 Grudziądz
+									NIP/VAT nr: 8761092698
+									Regon: 870332530
+								</span>
+							</p>
+							<p>
+								<b><span id="contact--tel" class="contact-label"></span></b>
+								<span>0048 000 000 000</span>
+							</p>
+							<p>
+								<b><span id="contact--email" class="contact-label"></span></b>
+								<span>
+									<a href="mailto:contact@tsl-rolewicz.com">contact@tsl-rolewicz.com</a>
+								</span>
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- End Contact col -->
+
+			</div>
+		</div>
+	</section>
+	<!-- End Contact -->
+
+	<!--========== END PAGE LAYOUT ==========-->
+
+	<!--========== FOOTER ==========-->
+	<footer class="footer">
+		<div class="footer-content content container">
+			<span class="footer-link">
+				<img class="footer-logo" src="img/logo-blue.svg" alt="Rolewicz Logo">
+			</span>
+			<span class="footer-link">© 2020 FHU Rolewicz</span>
+			<span class="footer-link"><a href="#">Term & Conditions</a></span>
+			<span class="footer-link"><a href="#">Privacy Policy</a></span>
+			<span class="footer-link">Web design by <a class="color-base fweight-700"
+					href="http://www.sebster.dev/">SR</a></span>
+		</div>
+	</footer>
+	<!--========== END FOOTER ==========-->
+
+	<!-- DATABASE -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js"></script>
+	<script src="./data-text.js" type="text/javascript"></script>
+	<script src="js/set-language.min.js" type="text/javascript"></script>
+
+	<!-- PLUGINS -->
+	<script src="vendor/rellax.min.js" type="text/javascript"></script>
+
+	<!-- SCRIPTS -->
+	<script src="js/language-select.min.js" type="text/javascript"></script>
+	<script src="js/scroll-transitions.min.js" type="text/javascript"></script>
+	<script src="js/scroll-to-id.min.js" type="text/javascript"></script>
+	<script src="js/nav-collapse.min.js" type="text/javascript"></script>
+
+</body>
+<!-- END BODY -->
+
+</html>

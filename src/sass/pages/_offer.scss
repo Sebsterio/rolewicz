@@ -1,0 +1,21 @@
+/*================================================================
+    offer.scss
+================================================================*/
+
+.offer {
+	.offer-subheading {
+		text-transform: uppercase;
+		font-weight: 200;
+		margin-left: 20px;
+		color: $color-subtitle;
+		font-size: 16px;
+
+		@media (max-width: $screen-xs-max) {
+			font-size: 14px;
+		}
+		@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+			margin-left: 0;
+			display: block;
+		}
+	}
+}

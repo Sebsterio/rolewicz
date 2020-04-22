@@ -1,0 +1,69 @@
+/*================================================================
+    contact.scss
+================================================================*/
+
+.contact {
+	background-image: url("../img/1920x1080/14.jpg");
+	background-size: cover;
+	// background-attachment: fixed;
+
+	.row {
+		position: relative;
+	}
+
+	.enquire-input,
+	.enquire-textarea {
+		@include font($size: 14px, $weight: 400);
+		color: $color-subtitle;
+		@include placeholder($color-subtitle);
+		background: $color-light-transparent;
+		border: none;
+		box-shadow: none;
+		@include border-radius(0);
+		padding-left: 15px;
+
+		&:focus {
+			color: $color-heading;
+			@include placeholder($color-heading);
+			box-shadow: none;
+		}
+	}
+
+	.enquire-input {
+		height: 50px;
+	}
+
+	.btn-wrap {
+		text-align: center;
+
+		.enquire-btn {
+			width: 50%;
+			text-transform: uppercase;
+		}
+	}
+
+	.col-info {
+		margin-top: 50px;
+
+		@media (min-width: $screen-md-min) {
+			margin-top: unset;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			display: flex;
+			align-items: center;
+		}
+
+		.info-container {
+			display: flex;
+			justify-content: center;
+
+			.info {
+				background-color: white;
+				padding: 40px;
+				// @media (min-width: $screen-md-min) {}
+			}
+		}
+	}
+}

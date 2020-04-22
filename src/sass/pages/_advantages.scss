@@ -1,0 +1,100 @@
+/*================================================================
+    advantages.scss
+================================================================*/
+
+.advantages {
+	// position: relative;
+	background-image: url("./../img/1920x1080/18.jpg");
+	background-size: cover;
+
+	.advantages-wrap {
+		width: 100%;
+		display: grid;
+		grid-gap: 2px;
+		align-items: stretch;
+		align-content: stretch;
+		justify-content: center;
+
+		@media screen and (min-width: $screen-sm-min) {
+			grid-template-columns: 1fr 1fr;
+			max-width: none;
+		}
+		@media screen and (min-width: $screen-md-min) {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+
+		.advantages-heading {
+			margin-bottom: 15px + 20px;
+			grid-column: 1 / -1;
+			color: $color-white;
+		}
+
+		& > div {
+			height: 100%;
+		}
+	}
+}
+
+// wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
+
+.advantage {
+	height: 100%;
+	max-width: $screen-xs-min;
+	// background: $color-white;
+	background-color: rgba(255, 255, 255, 0.9) !important;
+	padding: 50px;
+
+	.advantage-icon-wrap,
+	.advantage-info,
+	.advantage-link {
+		@include translate3d(0, 0, 0);
+		@include cubic-transition(
+			$delay: 0,
+			$duration: 300ms,
+			$property: (
+				all,
+			)
+		);
+	}
+	.advantage-link {
+		display: inline-block;
+		opacity: 0;
+	}
+
+	.advantage-icon {
+		display: block;
+		@include font($size: 30px);
+		color: $color-link-hover;
+		margin-bottom: 30px;
+	}
+
+	&:hover {
+		.advantage-icon-wrap {
+			opacity: 0;
+			@include translate3d(0, -30px, 0);
+			@include cubic-transition(
+				$delay: 0,
+				$duration: 300ms,
+				$property: (
+					all,
+				)
+			);
+		}
+
+		.advantage-info {
+			@include translate3d(0, -60px, 0);
+			@include cubic-transition(
+				$delay: 0,
+				$duration: 300ms,
+				$property: (
+					all,
+				)
+			);
+		}
+
+		.advantage-link {
+			@include translate3d(0, -30px, 0);
+			opacity: 1;
+		}
+	}
+}

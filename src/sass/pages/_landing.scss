@@ -1,0 +1,93 @@
+/*================================================================
+    landing.scss
+================================================================*/
+
+.landing {
+	position: relative;
+	height: 100vh;
+	overflow: hidden;
+
+	.bg-back {
+		background-image: url("./../img/1920x1080/04-back.jpg");
+	}
+	.bg-front {
+		background-image: url("./../img/1920x1080/04-front.png");
+	}
+
+	.bg-text {
+		// display: none;
+		position: absolute;
+		left: 0;
+		top: 230px;
+		opacity: 0.12;
+		filter: blur(1px);
+
+		img {
+			transform: scale(2.5) translateX(30%);
+
+			@media (max-width: $screen-sm-min) {
+				transform: scale(2) translateX(24%);
+			}
+		}
+	}
+
+	.hero {
+		@include position(absolute, $top: 30%);
+		width: 90%;
+	}
+
+	.hero-logo-img {
+		max-width: 200px;
+		transition: opacity 300ms ease;
+
+		$shadow: drop-shadow(0 0 1px rgba(0, 0, 0, 1));
+		-webkit-filter: $shadow;
+		-ms-filter: $shadow;
+		filter: $shadow;
+
+		/* Navigation collapse  */
+		@media (max-width: $screen-xs-max) {
+			display: none;
+		}
+	}
+
+	.hero-title {
+		span {
+			line-height: 1.1;
+			font-size: 100px;
+			text-shadow: 0 0 2px rgba(0, 0, 0, 1);
+
+			@media (max-width: $screen-sm-min) {
+				@include font($size: 68px);
+				text-shadow: 0 0 4px rgba(0, 0, 0, 1);
+			}
+		}
+
+		span.title-left {
+			// TEMP
+			// background-color: black;
+			font-weight: 200;
+			color: rgb(200, 200, 200);
+
+			@media (max-width: $screen-sm-min) {
+				color: $color-sky-light;
+			}
+		}
+
+		span.title-right {
+			font-weight: 600;
+			// TEMP
+			color: $color-white;
+			// font-style: italic;
+		}
+	}
+
+	.slogan {
+		margin-top: 20px;
+		color: $color-subtitle;
+	}
+}
+
+.page-on-scroll .hero .hero-logo-img {
+	opacity: 0;
+}
