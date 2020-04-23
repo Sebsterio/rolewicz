@@ -21,21 +21,9 @@
 .btn-default-bg {
 	@include button-color(
 		$color-heading,
-		$color-white,
+		$color-base,
 		#f3f4f5,
-		$color-base,
-		0,
-		transparent,
-		transparent
-	);
-}
-
-.btn-base-bg {
-	@include button-color(
 		$color-white,
-		$color-white,
-		$color-base,
-		$color-base-shade,
 		0,
 		transparent,
 		transparent

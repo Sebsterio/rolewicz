@@ -1,0 +1,32 @@
+:root {
+	--index: 0;
+}
+
+.animated {
+	opacity: 0.01;
+	transition-delay: calc(0.08s * var(--index));
+	transition-duration: 0.3s;
+	transition-timing-function: cubic-bezier(0.75, -0.015, 0.565, 1.055);
+	transition-property: opacity, transform;
+
+	&.slow {
+		transition-delay: calc(0.12s * var(--index));
+		transition-duration: 0.5s;
+		transition-timing-function: ease;
+	}
+
+	&.slideInTop {
+		transform-origin: left center;
+		transform: translateY(-30%) scale(0.95);
+	}
+
+	&.fadeIn {
+		transform-origin: center;
+		transform: scale(0.9);
+	}
+}
+.animated.active,
+.active .animated {
+	opacity: 1;
+	transform: translateX(0%) scale(1);
+}

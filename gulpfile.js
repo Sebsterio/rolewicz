@@ -12,39 +12,21 @@ var gulp = require("gulp"),
 	rename = require("gulp-rename"),
 	uglify = require("gulp-uglify"),
 	pump = require("pump"),
-	htmlhint = require("gulp-htmlhint");
+	htmlhint = require("gulp-htmlhint"),
+	autoprefixer = require("gulp-autoprefixer");
 
 // --------------------------------------------------
 // [Libraries]
 // --------------------------------------------------
 
-// Sass - Compile Sass files into CSS
+// Sass, autoprefixer, minify
 gulp.task("sass", function () {
 	gulp
 		.src("./src/sass/**/*.scss")
 		.pipe(changed("./dist/css/"))
 		.pipe(sass({ outputStyle: "expanded" }))
 		.on("error", sass.logError)
-		.pipe(gulp.dest("./dist/css/"));
-});
-
-// Minify CSS
-gulp.task("minify-css", function () {
-	// Theme
-	gulp
-		.src(["./dist/css/index.css", "!./dist/css/index.min.css"])
-		.pipe(
-			cleanCSS({ debug: true }, function (details) {
-				console.log(details.name + ": " + details.stats.originalSize);
-				console.log(details.name + ": " + details.stats.minifiedSize);
-			})
-		)
-		.pipe(rename({ suffix: ".min" }))
-		.pipe(gulp.dest("./dist/css/"));
-
-	// RTL
-	gulp
-		.src(["./dist/css/index-rtl.css", "!./dist/css/index-rtl.min.css"])
+		.pipe(autoprefixer({ cascade: false }))
 		.pipe(
 			cleanCSS({ debug: true }, function (details) {
 				console.log(details.name + ": " + details.stats.originalSize);
@@ -55,22 +37,7 @@ gulp.task("minify-css", function () {
 		.pipe(gulp.dest("./dist/css/"));
 });
 
-// RTL CSS - Convert LTR CSS to RTL.
-gulp.task("rtlcss", function () {
-	gulp
-		.src([
-			"./dist/css/index.css",
-			"!./dist/css/index.min.css",
-			"!./dist/css/index-rtl.css",
-			"!./dist/css/index-rtl.min.css",
-		])
-		.pipe(changed("./dist/css/"))
-		.pipe(rtlcss())
-		.pipe(rename({ suffix: "-rtl" }))
-		.pipe(gulp.dest("./dist/css/"));
-});
-
-// Minify JS - Minifies JS
+// Minify JS
 gulp.task("uglify", function (cb) {
 	pump(
 		[
@@ -83,7 +50,7 @@ gulp.task("uglify", function (cb) {
 	);
 });
 
-// Htmlhint - Validate HTML
+// Validate HTML
 gulp.task("htmlhint", function () {
 	gulp
 		.src("./HTML/*.html")
@@ -96,21 +63,12 @@ gulp.task("htmlhint", function () {
 // [Gulp Task - Watch]
 // --------------------------------------------------
 
-// This handles watching and running tasks
+// Watch files for changes
 gulp.task("watch", function () {
 	gulp.watch("./src/sass/**/*.scss", ["sass"]);
-	gulp.watch("./dist/css/layout.css", ["minify-css"]);
-	gulp.watch("./dist/css/layout.css", ["rtlcss"]);
 	gulp.watch("./src/js/**/*.js", ["uglify"]);
 	gulp.watch("./dist/*.html", ["htmlhint"]);
 });
 
 // $ npm run gulp -> run all tasks
-gulp.task("default", [
-	"sass",
-	"minify-css",
-	"rtlcss",
-	"uglify",
-	"htmlhint",
-	"watch",
-]);
+gulp.task("default", ["sass", "uglify", "htmlhint", "watch"]);

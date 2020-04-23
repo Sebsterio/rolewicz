@@ -115,18 +115,7 @@ h4 {
 		@include font($size: 17px);
 	}
 }
-
 ::selection {
-	color: $color-white;
-	background: $color-base;
-	text-shadow: none;
-}
-::-webkit-selection {
-	color: $color-white;
-	background: $color-base;
-	text-shadow: none;
-}
-::-moz-selection {
 	color: $color-white;
 	background: $color-base;
 	text-shadow: none;

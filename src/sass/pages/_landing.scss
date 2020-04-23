@@ -7,11 +7,41 @@
 	height: 100vh;
 	overflow: hidden;
 
+	.bg-back,
+	.bg-front {
+		background-position: center bottom;
+	}
+
+	// mobile view - disable split image parallax
 	.bg-back {
-		background-image: url("./../img/1920x1080/04-back.jpg");
+		background-image: url("./../media/bg/1-375x812.jpg");
 	}
 	.bg-front {
-		background-image: url("./../img/1920x1080/04-front.png");
+		display: none;
+	}
+
+	@media screen and (min-width: 375px) {
+		.bg-back {
+			background-image: url("./../media/bg/1-1024x1366.jpg");
+		}
+	}
+	// desktop enable spilt image parallax
+	@media screen and (min-width: 1024px) {
+		.bg-back {
+			background-image: url("./../media/bg/1-back-1366x911.jpg");
+		}
+		.bg-front {
+			display: initial;
+			background-image: url("./../media/bg/1-front-1366x911.png");
+		}
+	}
+	@media screen and (min-width: 1366px) {
+		.bg-back {
+			background-image: url("./../media/bg/1-back-1920x1280.jpg");
+		}
+		.bg-front {
+			background-image: url("./../media/bg/1-front-1920x1280.png");
+		}
 	}
 
 	.bg-text {
@@ -30,11 +60,11 @@
 			}
 		}
 	}
+}
 
-	.hero {
-		@include position(absolute, $top: 30%);
-		width: 90%;
-	}
+.hero {
+	@include position(absolute, $top: 30%);
+	width: 90%;
 
 	.hero-logo-img {
 		max-width: 200px;

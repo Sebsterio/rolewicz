@@ -1,7 +1,7 @@
 // Uncomment this block to pull data from spreadhsheet
 // Also uncomment Tabletop CDN link in index.html
 // (prepend dash in the line below)
-//*
+/*
 Tabletop.init({
 	key:
 		"https://docs.google.com/spreadsheets/d/1uixytIJj9I2PgDNAqhLyIbt3k4WlHM9QOymvCWJ5p4c/edit?usp=sharing",
@@ -27,7 +27,6 @@ Tabletop.init({
 	})();
 
 	function buildLangSelect(container, languages) {
-		console.log("building form");
 		const langCodes = Object.keys(languages).filter(function (code) {
 			return ["section", "element", "ok"].indexOf(code) < 0;
 		});

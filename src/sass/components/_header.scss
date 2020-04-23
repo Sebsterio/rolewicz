@@ -214,6 +214,10 @@
 				all,
 			)
 		);
+
+		@media (max-width: $screen-sm-max) {
+			padding: 20px 12px;
+		}
 	}
 
 	.nav-item-hover {

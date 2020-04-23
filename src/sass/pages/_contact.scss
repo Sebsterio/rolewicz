@@ -3,14 +3,28 @@
 ================================================================*/
 
 .contact {
-	background-image: url("../img/1920x1080/14.jpg");
+	background-image: url("../media/bg/3-375x1760.jpg");
 	background-size: cover;
+	background-position: center;
 	// background-attachment: fixed;
+
+	@media screen and (min-width: 375px) {
+		background-image: url("../media/bg/3-760x1624.jpg");
+	}
+	@media screen and (min-width: 760px) {
+		background-image: url("../media/bg/3-1280x720.jpg");
+	}
+	@media screen and (min-width: 1280px) {
+		background-image: url("../media/bg/3-1920x1240.jpg");
+	}
 
 	.row {
 		position: relative;
 	}
+}
 
+// Inquiry col
+.inquiry-col {
 	.enquire-input,
 	.enquire-textarea {
 		@include font($size: 14px, $weight: 400);
@@ -38,32 +52,25 @@
 
 		.enquire-btn {
 			width: 50%;
-			text-transform: uppercase;
 		}
 	}
+}
 
-	.col-info {
-		margin-top: 50px;
+// Contact col
+.contact-col {
+	display: flex;
+	justify-content: center;
 
-		@media (min-width: $screen-md-min) {
-			margin-top: unset;
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			right: 0;
-			display: flex;
-			align-items: center;
-		}
+	.info-container {
+		padding: 40px;
+		background-color: white;
+	}
 
-		.info-container {
-			display: flex;
-			justify-content: center;
+	span {
+		display: block;
 
-			.info {
-				background-color: white;
-				padding: 40px;
-				// @media (min-width: $screen-md-min) {}
-			}
+		&.contact-label {
+			font-weight: bold;
 		}
 	}
 }
