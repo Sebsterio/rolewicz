@@ -4,7 +4,7 @@
 	const dropdown = form.querySelector(".js-lang-options");
 
 	function updateSelect() {
-		const language = document.documentElement.dataset.language; // <- set-language.js
+		const language = window.localStorage.getItem("language");
 		if (form.language.value !== language) {
 			form.language.value = language;
 		}

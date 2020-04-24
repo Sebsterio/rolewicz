@@ -5,17 +5,18 @@
 	const PARALLAX_PEEK_THRESHOLD = -150;
 	const HEADER_OFFSET_THRESHOLD = 70;
 
-	const rellax = new Rellax(".rellax");
+	const rellax = new Rellax(".parallax");
 
 	const header = document.querySelector("#header");
 	const hero = document.querySelector(".hero");
-	const parallax = document.querySelector(".rellax-container");
+	const parallax = document.querySelector(".parallax-container");
 	const images = document.querySelectorAll(".js-on-scroll");
 
 	var headerHeight = header.offsetHeight;
 
 	// ---------------------------------------------------------------------
 
+	// threshold < 0 --> image near viewports
 	function isPeekingIntoViewport(windowY, img, threshold) {
 		const windowBottomScrollY = windowY + window.innerHeight;
 		const imgIsBelowViewport = img.offsetTop + threshold > windowBottomScrollY;
@@ -56,7 +57,7 @@
 	function handleScroll() {
 		const windowY = window.pageYOffset;
 		updateHeader(windowY);
-		if (parallax) toggleParallax(windowY);
+		// if (parallax) toggleParallax(windowY);
 		if (images.length) updateImages(windowY);
 	}
 

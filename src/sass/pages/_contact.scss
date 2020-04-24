@@ -3,19 +3,21 @@
 ================================================================*/
 
 .contact {
-	background-image: url("../media/bg/3-375x1760.jpg");
-	background-size: cover;
-	background-position: center;
-	// background-attachment: fixed;
+	&.preload-bg {
+		background-image: url("../media/bg/3-375x1760.webp");
+		background-size: cover;
+		background-position: center;
+		// background-attachment: fixed;
 
-	@media screen and (min-width: 375px) {
-		background-image: url("../media/bg/3-760x1624.jpg");
-	}
-	@media screen and (min-width: 760px) {
-		background-image: url("../media/bg/3-1280x720.jpg");
-	}
-	@media screen and (min-width: 1280px) {
-		background-image: url("../media/bg/3-1920x1240.jpg");
+		@media screen and (min-width: 375px) {
+			background-image: url("../media/bg/3-760x1624.webp");
+		}
+		@media screen and (min-width: 760px) {
+			background-image: url("../media/bg/3-1280x720.webp");
+		}
+		@media screen and (min-width: 1280px) {
+			background-image: url("../media/bg/3-1920x1240.webp");
+		}
 	}
 
 	.row {
@@ -68,9 +70,14 @@
 
 	span {
 		display: block;
+		white-space: nowrap;
 
 		&.contact-label {
 			font-weight: bold;
+
+			&.inline {
+				display: inline;
+			}
 		}
 	}
 }

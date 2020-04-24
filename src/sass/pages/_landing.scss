@@ -7,39 +7,44 @@
 	height: 100vh;
 	overflow: hidden;
 
-	.bg-back,
-	.bg-front {
+	.preload-bg.bg-back,
+	.preload-bg.bg-front {
+		height: 100vh;
+		width: 100vw;
+		background-size: cover;
+		background-repeat: no-repeat;
 		background-position: center bottom;
+		// background-position: 50% 80%;
 	}
 
 	// mobile view - disable split image parallax
-	.bg-back {
-		background-image: url("./../media/bg/1-375x812.jpg");
+	.preload-bg.bg-back {
+		background-image: url("./../media/bg/1-375x812.webp");
 	}
-	.bg-front {
+	.preload-bg.bg-front {
 		display: none;
 	}
 
 	@media screen and (min-width: 375px) {
-		.bg-back {
-			background-image: url("./../media/bg/1-1024x1366.jpg");
+		.preload-bg.bg-back {
+			background-image: url("./../media/bg/1-1024x1366.webp");
 		}
 	}
 	// desktop enable spilt image parallax
 	@media screen and (min-width: 1024px) {
-		.bg-back {
-			background-image: url("./../media/bg/1-back-1366x911.jpg");
+		.preload-bg.bg-back {
+			background-image: url("./../media/bg/1-back-1366x911.webp");
 		}
-		.bg-front {
-			display: initial;
+		.preload-bg.bg-front {
+			display: block;
 			background-image: url("./../media/bg/1-front-1366x911.png");
 		}
 	}
 	@media screen and (min-width: 1366px) {
-		.bg-back {
-			background-image: url("./../media/bg/1-back-1920x1280.jpg");
+		.preload-bg.bg-back {
+			background-image: url("./../media/bg/1-back-1920x1280.webp");
 		}
-		.bg-front {
+		.preload-bg.bg-front {
 			background-image: url("./../media/bg/1-front-1920x1280.png");
 		}
 	}

@@ -1,7 +1,4 @@
-// Uncomment this block to pull data from spreadhsheet
-// Also uncomment Tabletop CDN link in index.html
-// (prepend dash in the line below)
-/*
+//*
 Tabletop.init({
 	key:
 		"https://docs.google.com/spreadsheets/d/1uixytIJj9I2PgDNAqhLyIbt3k4WlHM9QOymvCWJ5p4c/edit?usp=sharing",
@@ -58,15 +55,20 @@ Tabletop.init({
 	}
 
 	window.setLanguage = function (lang) {
-		const data = JSON.parse(dataText); // data-text.js
-		if (!lang) lang = userLanguage;
+		// Get up-to-date data from data-text.js (over-written by Tabletop)
+		const data = JSON.parse(dataText);
 
-		// Handle unsupported languages
-		const supportedLanguages = Object.keys(data[0]);
-		if (supportedLanguages.indexOf(lang) < 0) lang = "en";
+		// Check preference localStorage (if block not called by UI select)
+		if (!lang) lang = window.localStorage.getItem("language");
 
-		// update langage select element (language-select.js)
-		document.documentElement.dataset.language = lang;
+		// Get preferences in user browser & handle unsupported languages
+		if (!lang) {
+			lang = userLanguage;
+			const supportedLanguages = Object.keys(data[0]);
+			if (supportedLanguages.indexOf(lang) < 0) lang = "en";
+		}
+		// Save preference in local storage (expected by language-select.js)
+		window.localStorage.setItem("language", lang);
 
 		// Insert text from JSON into HTML elements
 		data.forEach(function (row) {
