@@ -8,18 +8,19 @@ var gulp = require("gulp"),
 	sass = require("gulp-sass"),
 	changed = require("gulp-changed"),
 	cleanCSS = require("gulp-clean-css"),
-	rtlcss = require("gulp-rtlcss"),
 	rename = require("gulp-rename"),
 	uglify = require("gulp-uglify"),
 	pump = require("pump"),
 	htmlhint = require("gulp-htmlhint"),
-	autoprefixer = require("gulp-autoprefixer");
+	autoprefixer = require("gulp-autoprefixer"),
+	concat = require("gulp-concat"),
+	gzip = require("gulp-gzip");
 
 // --------------------------------------------------
 // [Libraries]
 // --------------------------------------------------
 
-// Sass, autoprefixer, minify
+// CSS
 gulp.task("sass", function () {
 	gulp
 		.src("./src/sass/**/*.scss")
@@ -34,17 +35,18 @@ gulp.task("sass", function () {
 			})
 		)
 		.pipe(rename({ suffix: ".min" }))
-		.pipe(gulp.dest("./dist/css/"));
+		.pipe(gulp.dest("./dist/"));
 });
 
-// Minify JS
+// JS
 gulp.task("uglify", function (cb) {
 	pump(
 		[
 			gulp.src(["./src/js/**/*.js", "!./src/js/**/*.min.js"]),
+			concat("all.js"),
 			uglify(),
 			rename({ suffix: ".min" }),
-			gulp.dest("./dist/js/"),
+			gulp.dest("./dist/"),
 		],
 		cb
 	);
