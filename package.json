@@ -7,9 +7,11 @@
 	"license": "ISC",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"gulp": "gulp"
+		"gulp": "gulp",
+		"critical": "critical"
 	},
 	"devDependencies": {
+		"critical": "^1.3.9",
 		"gulp": "^3.9.1",
 		"gulp-autoprefixer": "^7.0.1",
 		"gulp-changed": "^1.3.0",

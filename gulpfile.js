@@ -13,8 +13,7 @@ var gulp = require("gulp"),
 	pump = require("pump"),
 	htmlhint = require("gulp-htmlhint"),
 	autoprefixer = require("gulp-autoprefixer"),
-	concat = require("gulp-concat"),
-	gzip = require("gulp-gzip");
+	concat = require("gulp-concat");
 
 // --------------------------------------------------
 // [Libraries]

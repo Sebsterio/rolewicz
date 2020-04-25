@@ -2,6 +2,10 @@
     base.scss
 ================================================================*/
 
+.non-critical {
+	display: initial;
+}
+
 html {
 	max-width: 100vw;
 	overflow-x: hidden;

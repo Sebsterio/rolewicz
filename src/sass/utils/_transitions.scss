@@ -26,7 +26,9 @@
 	}
 }
 .animated.active,
-.active .animated {
+.active .animated,
+// prevent specificity issue when inlining critical CSS
+.active .animated.slideInTop {
 	opacity: 1;
 	transform: translateX(0%) scale(1);
 }
