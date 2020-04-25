@@ -30,16 +30,17 @@
 	.enquire-input,
 	.enquire-textarea {
 		@include font($size: 14px, $weight: 400);
-		color: $color-subtitle;
 		@include placeholder($color-subtitle);
+		color: $color-heading;
 		background: $color-light-transparent;
+		@include placeholder($color-heading);
 		border: none;
 		box-shadow: none;
 		@include border-radius(0);
 		padding-left: 15px;
 
 		&:focus {
-			color: $color-heading;
+			color: black;
 			@include placeholder($color-heading);
 			box-shadow: none;
 		}
@@ -66,6 +67,16 @@
 	.info-container {
 		padding: 40px;
 		background-color: white;
+	}
+
+	.col-override {
+		// force boostrap sm breakpoint at xs width
+		// avoid single narrow col with lots of empty space around
+		@media screen and (min-width: $screen-xs-min) {
+			// display: inline-block;
+			width: 50%;
+			float: left;
+		}
 	}
 
 	span {
