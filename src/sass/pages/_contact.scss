@@ -4,19 +4,19 @@
 
 .contact {
 	&.preload-bg {
-		background-image: url("../media/bg/3-375x1760.webp");
+		background-image: url("media/bg/3-375x1760.webp");
 		background-size: cover;
 		background-position: center;
 		// background-attachment: fixed;
 
 		@media screen and (min-width: 375px) {
-			background-image: url("../media/bg/3-760x1624.webp");
+			background-image: url("media/bg/3-760x1624.webp");
 		}
 		@media screen and (min-width: 760px) {
-			background-image: url("../media/bg/3-1280x720.webp");
+			background-image: url("media/bg/3-1280x720.webp");
 		}
 		@media screen and (min-width: 1280px) {
-			background-image: url("../media/bg/3-1920x1240.webp");
+			background-image: url("media/bg/3-1920x1240.webp");
 		}
 	}
 

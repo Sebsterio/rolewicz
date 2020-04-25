@@ -4,23 +4,23 @@
 
 .advantages {
 	&.preload-bg {
-		background-image: url("../media/bg/2-375x2840.webp");
+		background-image: url("media/bg/2-375x2840.webp");
 		background-size: cover;
 		background-position: center;
 
 		@media screen and (min-width: 375px) {
-			background-image: url("../media/bg/2-760x2240.webp");
+			background-image: url("media/bg/2-760x2240.webp");
 		}
 
 		@media screen and (min-width: 760px) {
-			background-image: url("../media/bg/2-990x1600.webp");
+			background-image: url("media/bg/2-990x1600.webp");
 		}
 		@media screen and (min-width: 990px) {
-			background-image: url("../media/bg/2-1200x1320.webp");
+			background-image: url("media/bg/2-1200x1320.webp");
 		}
 
 		@media screen and (min-width: 1200px) {
-			background-image: url("../media/bg/2-1920x1240.webp");
+			background-image: url("media/bg/2-1920x1240.webp");
 		}
 	}
 
