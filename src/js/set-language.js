@@ -1,33 +1,22 @@
-//*
-Tabletop.init({
-	key:
-		"https://docs.google.com/spreadsheets/d/1uixytIJj9I2PgDNAqhLyIbt3k4WlHM9QOymvCWJ5p4c/edit?usp=sharing",
-	simpleSheet: true,
-	order: "id",
-	callback: function (data) {
-		dataText = JSON.stringify(data).replace(/\\n/gm, "<br>");
-		setLanguage();
-	},
-	error: function (err) {
-		console.log("Tabletop fetch error: " + err);
-	},
-});
-//*/
+// Parse translation data (from data-text.js)
+dataText = JSON.parse(dataText);
 
 (function () {
 	"use strict";
 
-	// Determine browser language
-	const userLanguage = (function () {
-		const languageString = navigator.language || navigator.userLanguage || "";
-		return languageString.split(/[_-]/)[0].toLowerCase();
-	})();
+	const dropdown = document.querySelector(".js-lang-options");
+	const langForm = document.querySelector(".js-lang-select");
 
-	function buildLangSelect(container, languages) {
-		const langCodes = Object.keys(languages).filter(function (code) {
-			return ["section", "element", "ok"].indexOf(code) < 0;
-		});
-		container.innerHTML = langCodes
+	// Add options to select-language form from languages available in database
+	function buildLangSelect(row) {
+		const languages = Object.assign({}, row);
+		delete languages.section;
+		delete languages.element;
+
+		if (dropdown.childNodes.length === languages.length) return;
+
+		const langCodes = Object.keys(languages);
+		dropdown.innerHTML = langCodes
 			.map(function (code) {
 				const label = languages[code];
 				return (
@@ -46,52 +35,88 @@ Tabletop.init({
 			.join("");
 	}
 
-	function insertHtml(el, val) {
-		if (el.nodeName === "INPUT" || el.nodeName == "TEXTAREA") {
-			el.placeholder = val;
-		} else {
-			el.innerHTML = val;
-		}
+	// Update element with translated content
+	function insertHtml(row, lang) {
+		const prefix = row.section === "component" ? "." : "#";
+		const selector = prefix + row.section + "--" + row.element;
+		const els = document.querySelectorAll(selector);
+		const val = row[lang].replace(/\\n/gm, "<br>");
+		if (els.length > 0)
+			els.forEach(function (el) {
+				if (el.nodeName === "INPUT" || el.nodeName == "TEXTAREA") {
+					el.placeholder = val;
+				} else {
+					el.innerHTML = val;
+				}
+			});
+		else console.log("InsertHtml Error. Element not found. Id: " + selector);
 	}
 
-	window.setLanguage = function (lang) {
-		// Get up-to-date data from data-text.js (over-written by Tabletop)
-		const data = JSON.parse(dataText);
+	// Insert translated text into HTML elements
+	function translateSite(lang, data) {
+		data.forEach(function (row) {
+			if (row.element === "lang-select") buildLangSelect(row);
+			else insertHtml(row, lang);
+		});
+	}
 
-		// Check preference localStorage (if block not called by UI select)
-		if (!lang) lang = window.localStorage.getItem("language");
+	// Determine browser language
+	const browserLanguage = (function () {
+		const languageString = navigator.language || navigator.userLanguage || "";
+		return languageString.split(/[_-]/)[0].toLowerCase();
+	})();
 
-		// Get preferences in user browser & handle unsupported languages
+	function getClientLanguage(data) {
+		// Check preference in localStorage when initializing app
+		var lang = window.localStorage.getItem("language");
+
+		// Get preference from user browser & handle unsupported languages
 		if (!lang) {
-			lang = userLanguage;
+			lang = browserLanguage;
 			const supportedLanguages = Object.keys(data[0]);
 			if (supportedLanguages.indexOf(lang) < 0) lang = "en";
 		}
-		// Save preference in local storage (expected by language-select.js)
-		window.localStorage.setItem("language", lang);
 
-		// Insert text from JSON into HTML elements
-		data.forEach(function (row) {
-			// build language select element if empty
-			if (row.element === "lang-select") {
-				const options = document.querySelector(".js-lang-options");
-				if (!options.childNodes.length) buildLangSelect(options, row);
-			}
-			// insert HTML
-			else {
-				const prefix = row.section === "component" ? "." : "#";
-				const selector = prefix + row.section + "--" + row.element;
-				const els = document.querySelectorAll(selector);
-				const val = row[lang];
-				if (els.length > 0)
-					els.forEach(function (el) {
-						insertHtml(el, val);
-					});
-				else
-					console.log("InsertHtml Error. Element not found. Id: " + selector);
-			}
-		});
+		return lang;
+	}
+
+	// Set correct site language with up-to-date translation data
+	window.setLanguage = function (lang) {
+		const data = window.dataText; // data-text.js
+
+		// Automatically set language on site load
+		if (!lang) lang = getClientLanguage(data);
+
+		// Update view
+		translateSite(lang, data);
+		window.updateSelect(lang); // layout-select.js
 	};
 
-	setLanguage();
+	// Update site content preserving currently selected language
+	function updateTranslation(data) {
+		const currentLang = langForm.language.value;
+		setLanguage(currentLang);
+	}
+
+	function fetchTranslation(callback) {
+		Tabletop.init({
+			key:
+				"https://docs.google.com/spreadsheets/d/1uixytIJj9I2PgDNAqhLyIbt3k4WlHM9QOymvCWJ5p4c/edit?usp=sharing",
+			simpleSheet: true,
+			order: "id",
+			// update translation with remote data when available
+			callback: callback,
+			error: function (err) {
+				console.log("Tabletop fetch error: " + err);
+			},
+		});
+	}
+
+	// --------------------------------- Init ------------------------------------------
+
+	// Translate site with local data on doc load
+	setLanguage(null);
+
+	// Translate site with remote data when available
+	fetchTranslation(updateTranslation);
 })();

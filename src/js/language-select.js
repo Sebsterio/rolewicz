@@ -3,20 +3,19 @@
 	const legend = form.querySelector(".js-lang-legend");
 	const dropdown = form.querySelector(".js-lang-options");
 
-	function updateSelect() {
-		const language = window.localStorage.getItem("language");
-		if (form.language.value !== language) {
-			form.language.value = language;
+	window.updateSelect = function (lang) {
+		if (form.language.value !== lang) {
+			form.language.value = lang;
 		}
 		const selectedLabel = form.querySelector("input:checked + label");
 		legend.innerHTML = selectedLabel.innerText;
-	}
+	};
 
 	// Handle option selection
 	form.addEventListener("input", function (e) {
 		const lang = e.target.value;
-		setLanguage(lang); // set-language.js
-		updateSelect();
+		window.localStorage.setItem("language", lang);
+		window.setLanguage(lang); // set-language.js
 	});
 
 	// Toggle dropdown
@@ -24,6 +23,4 @@
 		if (e.target === legend) dropdown.classList.toggle("open");
 		else dropdown.classList.remove("open");
 	});
-
-	updateSelect();
 })();
