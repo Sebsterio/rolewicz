@@ -173,7 +173,9 @@
 					</div>
 				</div>
 				<div class="col-md-5 col-md-offset-1 col-full-height-md">
-					<img class="about-img img-responsive img-shadowed" src="media/img/2.webp" alt="Our Office">
+					<img class="about-img img-responsive img-shadowed lazy"
+						src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="media/img/2.webp"
+						alt="Our Office">
 				</div>
 			</div>
 			<!--// end row -->
@@ -182,7 +184,7 @@
 	<!-- End About -->
 
 	<!-- Advantages -->
-	<section id="advantages" class="advantages preload-bg">
+	<section id="advantages" class="advantages preload-bg lazy">
 		<div class="content-lg container">
 			<div class="advantages-wrap">
 				<h2 id="advantages--heading" class="advantages-heading color-white">ADVANTAGES</h2>
@@ -294,8 +296,8 @@
 			<div class="row margin-b-50">
 				<div class="col-sm-6 sm-margin-b-50">
 					<div class="margin-b-20">
-						<div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
-							<img class="img-responsive img-shadowed" src="media/img/3.webp" alt="Trucks and containers">
+						<div>
+							<img class="img-responsive img-shadowed lazy" data-src="media/img/3.webp" alt="Trucks and containers">
 						</div>
 					</div>
 					<h4>
@@ -308,8 +310,8 @@
 
 				<div class="col-sm-6 sm-margin-b-50">
 					<div class="margin-b-20">
-						<div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
-							<img class="img-responsive img-shadowed" src="media/img/4.webp" alt="Trucks and containers">
+						<div>
+							<img class="img-responsive img-shadowed lazy" data-src="media/img/4.webp" alt="Trucks and containers">
 						</div>
 					</div>
 					<h4>
@@ -325,8 +327,8 @@
 			<div class="row ">
 				<div class="col-sm-6 sm-margin-b-50">
 					<div class="margin-b-20">
-						<div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
-							<img class="img-responsive img-shadowed" src="media/img/5.webp" alt="Trucks and containers">
+						<div>
+							<img class="img-responsive img-shadowed lazy" data-src="media/img/5.webp" alt="Trucks and containers">
 						</div>
 					</div>
 					<h4>
@@ -340,8 +342,8 @@
 
 				<div class="col-sm-6 sm-margin-b-50">
 					<div class="margin-b-20">
-						<div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
-							<img class="img-responsive img-shadowed" src="media/img/6.webp" alt="Trucks and containers">
+						<div>
+							<img class="img-responsive img-shadowed lazy" data-src="media/img/6.webp" alt="Trucks and containers">
 						</div>
 					</div>
 					<h4>
@@ -359,7 +361,7 @@
 	<!-- End Offer -->
 
 	<!-- Contact -->
-	<section id="contact" class="contact preload-bg">
+	<section id="contact" class="contact preload-bg lazy">
 		<div class="content-lg container">
 			<div class="row">
 
@@ -504,6 +506,9 @@
 
 
 	<!-- SCRITPS -->
+	<script>
+		document.documentElement.classList.add('js')
+	</script>
 	<script src="vendor/rellax.min.js" type="text/javascript"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js"></script>
 	<script src="data-text.js" type="text/javascript"></script>

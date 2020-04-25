@@ -8,7 +8,7 @@
 		img.src = url;
 	}
 
-	function preloadImages(imgs) {
+	window.preloadImages = function (imgs) {
 		imgs.forEach(function (img) {
 			const hqUrl = img.src.replace(/.webp/, ".hq.webp");
 			preloadImage(hqUrl, function () {
@@ -16,9 +16,9 @@
 				img.src = hqUrl;
 			});
 		});
-	}
+	};
 
-	function preloadBackgrounds(bgs) {
+	window.preloadBackgrounds = function (bgs) {
 		bgs.forEach(function (bg) {
 			// Use original bg while resizing in order to avoid specificity issues
 			// when new image resolutions load on breakpoints
@@ -42,7 +42,7 @@
 				bg.style.backgroundImage = 'url("' + hqUrl + '")';
 			});
 		});
-	}
+	};
 
 	// Debounce
 	const interval = 300;
