@@ -33,7 +33,7 @@ li a {
 
 a {
 	@include font($family: $font-family-base);
-	color: $color-link;
+	color: $color-heading;
 	outline: 0;
 
 	&:focus,
