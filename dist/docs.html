@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Docs | Rolewicz</title>
+</head>
+<style>
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+		line-height: 1.5em;
+	}
+</style>
+
+<body>
+	<h2 id="modyfikaja-t-umaczenia">Modyfikaja tłumaczenia</h2>
+	<ol>
+		<li>Otwórz <a
+				href="https://docs.google.com/spreadsheets/d/1uixytIJj9I2PgDNAqhLyIbt3k4WlHM9QOymvCWJ5p4c/edit?usp=sharing">Google
+				Spreadsheet</a></li>
+		<li>Wprowadź zmiany w wybranych komórkach (synchronizacja automatyczna w czasie rzeczywistym)</li>
+	</ol>
+	<h2 id="dodanie-t-umaczenia">Dodanie tłumaczenia</h2>
+	<ol>
+		<li>Otwórz <a
+				href="https://docs.google.com/spreadsheets/d/1uixytIJj9I2PgDNAqhLyIbt3k4WlHM9QOymvCWJ5p4c/edit?usp=sharing">Google
+				Spreadsheet</a></li>
+		<li>Stwórz nową kolumnę z kodem języka w nagłówku, np. <code>fr</code>, <code>de</code></li>
+		<li>Wpisz tłumaczenia w odpowiednie komórki</li>
+	</ol>
+
+	<h2 id="opcjonalne-synchronizacja-baz-danych">Opcjonalne: Synchronizacja baz danych</h2>
+	<p>Baza danych zewnętrzna (Google Spreadsheet) ładuje się niecałą sekundę po wyświetleniu strony. Aby nowo-dodany text
+		był dostępny od razu, zauktualizuj bazę danych wewnętrzną (hosting):</p>
+	<ol>
+		<li>Wejdź w <a href="https://www.rolewicz-tsl.com/sync.html">rolewicz-tsl.com/sync</a></li>
+		<li>Skopiuj cały tekst (Ctr+A, Ctr+C)</li>
+		<li>Wejdź w <a
+				href="https://filemanager.one.com/textEditor#damian.rolewicz@op.pl/rolewicz-tsl.com/data-text.js">edytor
+				lokalnej bazy danych</a></li>
+		<li>Usuń zawartość i wklej (Ctr+A, Ctr+V)</li>
+		<li>Clicknij &quot;Save&quot;</li>
+	</ol>
+
+	<h2 id="modyfikacja-tekstu">Modyfikacja statycznego tekstu</h2>
+	<ol>
+		<li>Wejdź w <a
+				href="https://filemanager.one.com/textEditor#damian.rolewicz@op.pl/rolewicz-tsl.com/index.html">edytor pliku
+				HTML</a></li>
+		<li>Wyszukaj tekst, który chcsz zmienić (Ctr+F)</li>
+		<li>Wprowadź zmiany</li>
+	</ol>
+	<p>(Można zrobić tymczasową kopię zapasową przed wprowadzeniem zmian w HTML. W razie problemu, mamy backup w kodzie
+		źródłowym)</p>
+
+	<h2 id="zmiana-obraz-w">Zmiana obrazów</h2>
+	<ol>
+		<li>Wejdź w odpowiedni folder w <a
+				href="https://filemanager.one.com/#damian.rolewicz@op.pl/rolewicz-tsl.com/files/media/">edytorze plików</a></li>
+		<li>Usuń pliki, które chcesz wymienić i dodaj nowe pliki <strong>o tej samej nazwie co oryginały</strong>. Wymiary
+			mogą być troche inne ale dużą róznicę będzie widać. Jeśli wymiary będą inne, nazwa itak musi być taka jak w
+			oryginalnym pliku.</li>
+		<li>Zwróć uwagę, żę każdy plik ma 3 werjse:<ul>
+				<li>.jpg/.png - wersja oryginalna. Wymagana dla starych przeglądarek i Safari<ul>
+						<li>bez przezroczystości: JPG - polecam jakość kompresji 85%</li>
+						<li>z przezroczystością: PNG - polecam w 8 bitach (<a href="https://tinypng.com/">kowerter</a>)</li>
+					</ul>
+				</li>
+				<li>.webp - wersja skompresowana. Wymagana dla nowoczesnych przeglądarek. Polecam jakość kompresji 10% (<a
+						href="https://squoosh.app/">konwerter</a>)</li>
+				<li>.hq.webp - to ten sam format co powyżej; &quot;hq&quot; trzeba dodać to ręcznie do nazwy pliku. Obraz
+					ładuje się tylko jeśli istnieje więc nie jest wymagany. Polecam jakość kompresji 90% (<a
+						href="https://squoosh.app/">konwerter</a>)</li>
+			</ul>
+		</li>
+	</ol>
+
+</body>
+
+</html>
