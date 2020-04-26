@@ -4,10 +4,9 @@
 	const dropdown = form.querySelector(".js-lang-options");
 
 	window.updateSelect = function (lang) {
-		if (form.language.value !== lang) {
-			form.language.value = lang;
-		}
-		const selectedLabel = form.querySelector("input:checked + label");
+		dropdown.querySelector("[value=" + lang + "]").checked = true; // IE support
+		// form.language.value = lang;
+		const selectedLabel = dropdown.querySelector("input:checked + label");
 		legend.innerHTML = selectedLabel.innerText;
 	};
 
@@ -17,6 +16,19 @@
 		window.localStorage.setItem("language", lang);
 		window.setLanguage(lang); // set-language.js
 	});
+
+	// Handle option selection (IE)
+	if (
+		window.navigator.userAgent.indexOf("MSIE ") > 0 ||
+		!!navigator.userAgent.match(/Trident.*rv\:11\./)
+	) {
+		form.addEventListener("click", function (e) {
+			if (e.target.tagName !== "INPUT") return;
+			const lang = e.target.value;
+			window.localStorage.setItem("language", lang);
+			window.setLanguage(lang); // set-language.js
+		});
+	}
 
 	// Toggle dropdown
 	document.addEventListener("click", function (e) {

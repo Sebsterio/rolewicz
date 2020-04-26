@@ -66,7 +66,7 @@
 				if (el.tagName === "IMG" && el.dataset.src) {
 					el.src = el.dataset.src;
 					el.removeAttribute("data-src");
-					if (el.matches("img[src$=webp]")) preloadImages([el]);
+					if (el.src.includes(".webp")) preloadImages([el]);
 				}
 				// bg
 				else if (el.classList.contains("preload-bg")) preloadBackgrounds([el]);

@@ -24,15 +24,16 @@
 			simpleSheet: true,
 			order: "id",
 			callback: function (data) {
-				const json = JSON.stringify(data).replace(/\\n/gm, '<br>')
-				const string = "var dataText = `" + json + "`";
-				document.querySelector('#root').innerText = string
-				console.log(string);
+				const json = JSON.stringify(data).replace(/\\n/gm, '<br>').replace("’", "'")
+				const string = "var dataText = " + json;
+				document.querySelector('#root').innerText = string;
 			},
 			error: function (err) {
 				console.log("Tabletop fetch error: " + err);
 			},
 		});
+
+
 	</script>
 </body>
 

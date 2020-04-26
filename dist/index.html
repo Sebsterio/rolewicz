@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js webp">
 <!-- BEGIN HEAD -->
 
 <head>
@@ -13,26 +13,6 @@
 		 tsl, tsl europe, logistics poland, transport poland, tsl poland">
 	<meta name="author" content="Sebastian Rosloniec">
 
-	<!-- redirect users with no JS -->
-	<!-- <noscript>
-		<meta content="0; URL='/noscript/'" http-equiv="refresh">
-	</noscript> -->
-
-	<!-- load styles assyncronously -->
-	<link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700&display=swap"
-		type="text/css" onload="this.onload=null;this.rel='stylesheet'">
-	<link rel="preload" as="style" href="vendor/bootstrap/css/bootstrap.min.css" type="text/css"
-		onload="this.onload=null;this.rel='stylesheet'">
-	<link rel="preload" as="style" href="index.min.css" type="text/css" onload="this.onload=null;this.rel='stylesheet'">
-
-	<!-- if no JS, load assets synchronously -->
-	<noscript>
-		<link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700&display=swap" rel="stylesheet"
-			type="text/css">
-		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-		<link href="index.min.css" rel="stylesheet" type="text/css">
-	</noscript>
-
 	<!-- Favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -42,7 +22,47 @@
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">
 
-	<!-- Critical and temporary CSS -->
+	<!-- load styles assynchronously -->
+	<link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700&display=swap"
+		type="text/css" onload="this.onload=null;this.rel='stylesheet'" />
+	<link rel="preload" as="style" href="vendor/bootstrap/css/bootstrap.min.css" type="text/css"
+		onload="this.onload=null;this.rel='stylesheet'" />
+	<link rel="preload" as="style" href="index.min.css" type="text/css" onload="this.onload=null;this.rel='stylesheet'" />
+
+	<!-- if no JS, load assets synchronously -->
+	<noscript>
+		<link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700&display=swap" rel="stylesheet"
+			type="text/css" />
+		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="index.min.css" rel="stylesheet" type="text/css" />
+	</noscript>
+
+	<!-- Feature detection -->
+	<script>
+		function check_webp_alpha(callback) {
+			var img = new Image();
+			img.onload = function () {
+				var result = (img.width > 0) && (img.height > 0);
+				callback(result);
+			};
+			img.onerror = function () {
+				callback(false);
+			};
+			img.src = "data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAARBxAR/Q9ERP8DAABWUDggGAAAABQBAJ0BKgEAAQAAAP4AAA3AAP7mtQAAAA==";
+		}
+
+		check_webp_alpha(function (supported) {
+			if (!supported) {
+				document.documentElement.classList.remove('webp')
+				document.documentElement.classList.add('no-webp')
+			}
+		})
+
+		document.documentElement.classList.remove('no-js')
+		document.documentElement.classList.add('js')
+	</script>
+
+	<!-- Critical and temporary styles -->
 	<style>
 		html {
 			font-family: sans-serif;
@@ -83,7 +103,7 @@
 			background-position: center bottom
 		}
 
-		.landing .preload-bg.bg-back {
+		.webp .landing .preload-bg.bg-back {
 			background-image: url(media/bg/1-375x812.webp)
 		}
 
@@ -92,28 +112,28 @@
 		}
 
 		@media screen and (min-width:375px) {
-			.landing .preload-bg.bg-back {
+			.webp .landing .preload-bg.bg-back {
 				background-image: url(media/bg/1-1024x1366.webp)
 			}
 		}
 
 		@media screen and (min-width:1024px) {
-			.landing .preload-bg.bg-back {
+			.webp .landing .preload-bg.bg-back {
 				background-image: url(media/bg/1-back-1366x911.webp)
 			}
 
-			.landing .preload-bg.bg-front {
+			.webp .landing .preload-bg.bg-front {
 				display: block;
 				background-image: url(media/bg/1-front-1366x911.webp)
 			}
 		}
 
 		@media screen and (min-width:1366px) {
-			.landing .preload-bg.bg-back {
+			.webp .landing .preload-bg.bg-back {
 				background-image: url(media/bg/1-back-1920x1280.webp)
 			}
 
-			.landing .preload-bg.bg-front {
+			.webp .landing .preload-bg.bg-front {
 				background-image: url(media/bg/1-front-1920x1280.webp)
 			}
 		}
@@ -252,7 +272,7 @@
 					<!-- End Menu Toggle -->
 				</div>
 
-				<!-- Collapsable Contect -->
+				<!-- Collapsible Content -->
 				<div class="collapse navbar-collapse nav-collapse">
 					<div class="menu-container">
 						<ul class="navbar-nav navbar-nav-right">
@@ -359,9 +379,8 @@
 					</div>
 				</div>
 				<div class="col-md-5 col-md-offset-1 col-full-height-md">
-					<img class="about-img img-responsive img-shadowed lazy"
-						src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="media/img/2.webp"
-						alt="Our Office">
+					<img class="about-img img-responsive img-shadowed lazy" data-src="media/img/2.webp"
+						onerror="this.onerror=null; this.src='media/img/2.jpg'" alt="city from above with connected location pins">
 				</div>
 			</div>
 			<!--// end row -->
@@ -375,7 +394,7 @@
 			<div class="advantages-wrap">
 				<h2 id="advantages--heading" class="advantages-heading color-white">ADVANTAGES</h2>
 				<!-- row -->
-				<div class="js-on-scroll animated fadeIn" style="--index: 2">
+				<div class="advantage-wrapper js-on-scroll animated fadeIn" style="--index: 2">
 					<div class="advantage">
 						<div class="advantage-icon-wrap">
 							<img class="advantage-icon icon-user-following" src="media/icons/following.svg" alt="icon">
@@ -389,7 +408,7 @@
 						<a class="link advantage-link component--inquire" href="#contact">Inquire Now</a>
 					</div>
 				</div>
-				<div class="js-on-scroll animated fadeIn" style="--index: 1">
+				<div class="advantage-wrapper js-on-scroll animated fadeIn" style="--index: 1">
 					<div class="advantage">
 						<div class="advantage-icon-wrap">
 							<img class="advantage-icon icon-lock" src="media/icons/lock.svg" alt="icon">
@@ -403,7 +422,7 @@
 						<a class="link advantage-link component--inquire" href="#contact">Inquire Now</a>
 					</div>
 				</div>
-				<div class="js-on-scroll animated fadeIn" style="--index: 0">
+				<div class="advantage-wrapper js-on-scroll animated fadeIn" style="--index: 0">
 					<div class="advantage">
 						<div class="advantage-icon-wrap">
 							<img class="advantage-icon icon-speedometer" src="media/icons/speedometer.svg" alt="icon" />
@@ -419,7 +438,7 @@
 				<!--// end row -->
 				<!-- row -->
 
-				<div class="js-on-scroll animated fadeIn" style="--index: 2">
+				<div class="advantage-wrapper js-on-scroll animated fadeIn" style="--index: 2">
 					<div class="advantage">
 						<div class="advantage-icon-wrap">
 							<img class="advantage-icon icon-badge" src="media/icons/badge.svg" alt="icon" />
@@ -434,7 +453,7 @@
 						<a class="link advantage-link component--inquire" href="#contact">Inquire Now</a>
 					</div>
 				</div>
-				<div class="js-on-scroll animated fadeIn" style="--index: 1">
+				<div class="advantage-wrapper js-on-scroll animated fadeIn" style="--index: 1">
 					<div class="advantage">
 						<div class="advantage-icon-wrap">
 							<img class="advantage-icon icon-bubbles" src="media/icons/bubbles.svg" alt="icon" />
@@ -447,7 +466,7 @@
 						<a class="link advantage-link component--inquire" href="#contact">Inquire Now</a>
 					</div>
 				</div>
-				<div class="js-on-scroll animated fadeIn" style="--index: 0">
+				<div class="advantage-wrapper js-on-scroll animated fadeIn" style="--index: 0">
 					<div class="advantage">
 						<div class="advantage-icon-wrap">
 							<img class="advantage-icon icon-globe-alt" src="media/icons/globe-2.svg" alt="icon" />
@@ -483,7 +502,8 @@
 				<div class="col-sm-6 sm-margin-b-50">
 					<div class="margin-b-20">
 						<div>
-							<img class="img-responsive img-shadowed lazy" data-src="media/img/3.webp" alt="Trucks and containers">
+							<img class="img-responsive img-shadowed lazy" data-src="media/img/3.webp"
+								onerror="this.src='media/img/3.jpg';this.onerror=null" alt="Trucks and containers">
 						</div>
 					</div>
 					<h4>
@@ -497,7 +517,8 @@
 				<div class="col-sm-6 sm-margin-b-50">
 					<div class="margin-b-20">
 						<div>
-							<img class="img-responsive img-shadowed lazy" data-src="media/img/4.webp" alt="Trucks and containers">
+							<img class="img-responsive img-shadowed lazy" data-src="media/img/4.webp"
+								onerror="this.src='media/img/4.jpg';this.onerror=null" alt="Trucks and containers">
 						</div>
 					</div>
 					<h4>
@@ -514,7 +535,8 @@
 				<div class="col-sm-6 sm-margin-b-50">
 					<div class="margin-b-20">
 						<div>
-							<img class="img-responsive img-shadowed lazy" data-src="media/img/5.webp" alt="Trucks and containers">
+							<img class="img-responsive img-shadowed lazy" data-src="media/img/5.webp"
+								onerror="this.src='media/img/5.jpg';this.onerror=null" alt="Trucks and containers">
 						</div>
 					</div>
 					<h4>
@@ -529,7 +551,8 @@
 				<div class="col-sm-6 sm-margin-b-50">
 					<div class="margin-b-20">
 						<div>
-							<img class="img-responsive img-shadowed lazy" data-src="media/img/6.webp" alt="Trucks and containers">
+							<img class="img-responsive img-shadowed lazy" data-src="media/img/6.webp"
+								onerror="this.src='media/img/6.jpg';this.onerror=null" alt="Trucks and containers">
 						</div>
 					</div>
 					<h4>
@@ -690,19 +713,38 @@
 	</footer>
 	<!--========== END FOOTER ==========-->
 
-
-	<!-- SCRITPS -->
+	<!-- IE POLYFILLS -->
 	<script>
-		document.documentElement.classList.remove('no-js')
-		document.documentElement.classList.add('js')
+		if (window.NodeList && !NodeList.prototype.forEach) {
+			NodeList.prototype.forEach = Array.prototype.forEach;
+		}
+		if (!String.prototype.includes) {
+			String.prototype.includes = function (search, start) {
+				'use strict';
+
+				if (search instanceof RegExp) {
+					throw TypeError('first argument must not be a RegExp');
+				}
+				if (start === undefined) { start = 0; }
+				return this.indexOf(search, start) !== -1;
+			};
+		}
 	</script>
+
+	<!-- SCRIPTS -->
 	<script src="vendor/rellax.min.js" type="text/javascript"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js"></script>
-	<script src="data-text.js" type="text/javascript"></script>
+	<script src="data-text.js" type="text/javascript"></script> <!-- before all.min.js -->
 	<script src="all.min.js" type="text/javascript"></script>
 
-	<!-- END BODY -->
+	<!-- FALLBACK STYLES -->
+	<!-- Browsers that don't support preload AND with JS enabled -->
+	<link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700&display=swap" rel="stylesheet"
+		type="text/css" />
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="index.min.css" rel="stylesheet" type="text/css" />
 
 </body>
+<!-- END BODY -->
 
 </html>

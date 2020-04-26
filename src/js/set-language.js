@@ -1,20 +1,21 @@
-// Parse translation data (from data-text.js)
-dataText = JSON.parse(dataText);
-
 (function () {
 	"use strict";
 
 	const dropdown = document.querySelector(".js-lang-options");
-	const langForm = document.querySelector(".js-lang-select");
 
 	// Add options to select-language form from languages available in database
 	function buildLangSelect(row) {
-		const languages = Object.assign({}, row);
-		delete languages.section;
-		delete languages.element;
+		// Turn row into a list of langauges
+		const languages = {};
+		for (var key in row) {
+			if (row.hasOwnProperty(key) && ["section", "element"].indexOf(key) === -1)
+				languages[key] = row[key];
+		}
 
+		// Abandon if number of langauges hasn't changed
 		if (dropdown.childNodes.length === languages.length) return;
 
+		// replace HTML
 		const langCodes = Object.keys(languages);
 		dropdown.innerHTML = langCodes
 			.map(function (code) {
@@ -66,36 +67,36 @@ dataText = JSON.parse(dataText);
 		return languageString.split(/[_-]/)[0].toLowerCase();
 	})();
 
+	function isLangSupported(lang, supportedLanguages) {
+		return supportedLanguages.indexOf(lang) >= 0;
+	}
+
+	// Check user preference when initializing app
 	function getClientLanguage(data) {
-		// Check preference in localStorage when initializing app
-		var lang = window.localStorage.getItem("language");
-
-		// Get preference from user browser & handle unsupported languages
-		if (!lang) {
-			lang = browserLanguage;
-			const supportedLanguages = Object.keys(data[0]);
-			if (supportedLanguages.indexOf(lang) < 0) lang = "en";
-		}
-
-		return lang;
+		const supportedLanguages = Object.keys(data[0]);
+		const savedPreference = window.localStorage.getItem("language");
+		return isLangSupported(savedPreference, supportedLanguages)
+			? savedPreference
+			: isLangSupported(browserLanguage, supportedLanguages)
+			? browserLanguage
+			: "en";
 	}
 
 	// Set correct site language with up-to-date translation data
 	window.setLanguage = function (lang) {
-		const data = window.dataText; // data-text.js
+		const data = window.dataText; // in data-text.js
 
 		// Automatically set language on site load
 		if (!lang) lang = getClientLanguage(data);
 
 		// Update view
 		translateSite(lang, data);
-		window.updateSelect(lang); // layout-select.js
+		window.updateSelect(lang); // in layout-select.js
 	};
 
-	// Update site content preserving currently selected language
 	function updateTranslation(data) {
-		const currentLang = langForm.language.value;
-		setLanguage(currentLang);
+		window.dataText = data; // in data-text.js
+		setLanguage(null);
 	}
 
 	function fetchTranslation(callback) {
