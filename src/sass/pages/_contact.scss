@@ -2,6 +2,9 @@
     contact.scss
 ================================================================*/
 
+// ------------------ background imgae ----------------------
+
+// webp not supported
 .no-webp .contact.preload-bg {
 	background-image: url("media/bg/3-375x1760.jpg");
 	background-size: cover;
@@ -19,6 +22,7 @@
 	}
 }
 
+// webp supported
 .webp .contact.preload-bg {
 	background-image: url("media/bg/3-375x1760.webp");
 	background-size: cover;
@@ -35,6 +39,27 @@
 		background-image: url("media/bg/3-1920x1240.webp");
 	}
 }
+
+// JS disabled
+.no-js.webp .contact.preload-bg,
+.no-js.no-webp .contact.preload-bg {
+	background-image: url("media/bg/3-375x1760.jpg");
+	background-size: cover;
+	background-position: center;
+	// background-attachment: fixed;
+
+	@media screen and (min-width: 375px) {
+		background-image: url("media/bg/3-760x1624.jpg");
+	}
+	@media screen and (min-width: 760px) {
+		background-image: url("media/bg/3-1280x720.jpg");
+	}
+	@media screen and (min-width: 1280px) {
+		background-image: url("media/bg/3-1920x1240.jpg");
+	}
+}
+
+// ----------------------------------------------------
 
 .contact .row {
 	position: relative;

@@ -2,6 +2,9 @@
     landing.scss
 ================================================================*/
 
+// ------------------ background ---------------------
+
+// webp no supported
 .no-webp .landing {
 	// mobile view - disable split image parallax
 	.preload-bg.bg-back {
@@ -35,6 +38,8 @@
 		}
 	}
 }
+
+// webp supported
 .webp .landing {
 	// mobile view - disable split image parallax
 	.preload-bg.bg-back {
@@ -69,6 +74,43 @@
 	}
 }
 
+// JS disabled
+.no-js.webp .landing,
+.no-js.no-webp .landing {
+	// mobile view - disable split image parallax
+	.preload-bg.bg-back {
+		background-image: url("media/bg/1-375x812.jpg");
+	}
+	.preload-bg.bg-front {
+		display: none;
+	}
+
+	@media screen and (min-width: 375px) {
+		.preload-bg.bg-back {
+			background-image: url("media/bg/1-1024x1366.jpg");
+		}
+	}
+	// desktop enable spilt image parallax
+	@media screen and (min-width: 1024px) {
+		.preload-bg.bg-back {
+			background-image: url("media/bg/1-back-1366x911.jpg");
+		}
+		.preload-bg.bg-front {
+			display: block;
+			background-image: url("media/bg/1-front-1366x911.png");
+		}
+	}
+	@media screen and (min-width: 1366px) {
+		.preload-bg.bg-back {
+			background-image: url("media/bg/1-back-1920x1280.jpg");
+		}
+		.preload-bg.bg-front {
+			background-image: url("media/bg/1-front-1920x1280.png");
+		}
+	}
+}
+
+// ---------------------------------------------------------------
 .landing {
 	position: relative;
 	height: 100vh;

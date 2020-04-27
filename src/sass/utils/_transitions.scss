@@ -2,6 +2,11 @@
 	--index: 0;
 }
 
+.no-js .animated {
+	opacity: 1;
+	transform: none !important;
+}
+
 .animated {
 	opacity: 0.01;
 	transition-delay: calc(0.08s * var(--index));

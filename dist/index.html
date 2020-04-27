@@ -62,6 +62,15 @@
 		document.documentElement.classList.add('js')
 	</script>
 
+	<!-- Prevent img elements that rely on JS from downloading resources -->
+	<noscript>
+		<style>
+			.js-only {
+				display: none !important;
+			}
+		</style>
+	</noscript>
+
 	<!-- Critical and temporary styles -->
 	<style>
 		html {
@@ -379,8 +388,12 @@
 					</div>
 				</div>
 				<div class="col-md-5 col-md-offset-1 col-full-height-md">
-					<img class="about-img img-responsive img-shadowed lazy" data-src="media/img/2.webp"
+					<img class="js-only about-img img-responsive img-shadowed lazy" data-src="media/img/2.webp"
 						onerror="this.onerror=null; this.src='media/img/2.jpg'" alt="city from above with connected location pins">
+					<noscript>
+						<img class="about-img img-responsive img-shadowed lazy" src="media/img/2.jpg"
+							alt="city from above with connected location pins">
+					</noscript>
 				</div>
 			</div>
 			<!--// end row -->
@@ -502,8 +515,11 @@
 				<div class="col-sm-6 sm-margin-b-50">
 					<div class="margin-b-20">
 						<div>
-							<img class="img-responsive img-shadowed lazy" data-src="media/img/3.webp"
+							<img class="js-only img-responsive img-shadowed lazy" data-src="media/img/3.webp"
 								onerror="this.src='media/img/3.jpg';this.onerror=null" alt="Trucks and containers">
+							<noscript>
+								<img class="img-responsive img-shadowed lazy" src="media/img/3.jpg" alt="Trucks and containers">
+							</noscript>
 						</div>
 					</div>
 					<h4>
@@ -517,8 +533,11 @@
 				<div class="col-sm-6 sm-margin-b-50">
 					<div class="margin-b-20">
 						<div>
-							<img class="img-responsive img-shadowed lazy" data-src="media/img/4.webp"
+							<img class="js-only img-responsive img-shadowed lazy" data-src="media/img/4.webp"
 								onerror="this.src='media/img/4.jpg';this.onerror=null" alt="Trucks and containers">
+							<noscript>
+								<img class="img-responsive img-shadowed lazy" src="media/img/4.jpg" alt="Trucks and containers">
+							</noscript>
 						</div>
 					</div>
 					<h4>
@@ -535,8 +554,11 @@
 				<div class="col-sm-6 sm-margin-b-50">
 					<div class="margin-b-20">
 						<div>
-							<img class="img-responsive img-shadowed lazy" data-src="media/img/5.webp"
+							<img class="js-only img-responsive img-shadowed lazy" data-src="media/img/5.webp"
 								onerror="this.src='media/img/5.jpg';this.onerror=null" alt="Trucks and containers">
+							<noscript>
+								<img class="img-responsive img-shadowed lazy" src="media/img/5.jpg" alt="Trucks and containers">
+							</noscript>
 						</div>
 					</div>
 					<h4>
@@ -551,8 +573,11 @@
 				<div class="col-sm-6 sm-margin-b-50">
 					<div class="margin-b-20">
 						<div>
-							<img class="img-responsive img-shadowed lazy" data-src="media/img/6.webp"
+							<img class="js-only img-responsive img-shadowed lazy" data-src="media/img/6.webp"
 								onerror="this.src='media/img/6.jpg';this.onerror=null" alt="Trucks and containers">
+							<noscript>
+								<img class="img-responsive img-shadowed lazy" src="media/img/6.jpg" alt="Trucks and containers">
+							</noscript>
 						</div>
 					</div>
 					<h4>
@@ -640,6 +665,7 @@
 											FHU Mirosława Rolewicz<br>
 											ul. Śniadeckich 36/56<br>
 											86-300 Grudziądz<br>
+											<span id="contact--poland"></span>
 										</span>
 									</p>
 									<p>

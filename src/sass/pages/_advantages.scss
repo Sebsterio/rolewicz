@@ -2,6 +2,9 @@
     advantages.scss
 ================================================================*/
 
+// ------------------ background imgae ----------------------
+
+// webp not supported
 .no-webp .advantages.preload-bg {
 	background-image: url("media/bg/2-375x2840.jpg");
 	background-size: cover;
@@ -23,6 +26,7 @@
 	}
 }
 
+// webp supported
 .webp .advantages.preload-bg {
 	background-image: url("media/bg/2-375x2840.webp");
 	background-size: cover;
@@ -43,6 +47,31 @@
 		background-image: url("media/bg/2-1920x1240.webp");
 	}
 }
+
+// JS disabled
+.no-js.webp .advantages.preload-bg,
+.no-js.no-webp .advantages.preload-bg {
+	background-image: url("media/bg/2-375x2840.jpg");
+	background-size: cover;
+	background-position: center;
+
+	@media screen and (min-width: 375px) {
+		background-image: url("media/bg/2-760x2240.jpg");
+	}
+
+	@media screen and (min-width: 760px) {
+		background-image: url("media/bg/2-990x1600.jpg");
+	}
+	@media screen and (min-width: 990px) {
+		background-image: url("media/bg/2-1200x1320.jpg");
+	}
+
+	@media screen and (min-width: 1200px) {
+		background-image: url("media/bg/2-1920x1240.jpg");
+	}
+}
+
+// --------------------------------------------------------
 
 .advantages .advantages-wrap {
 	width: 100%;
