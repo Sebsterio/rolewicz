@@ -22,7 +22,7 @@ Built with gulp
 
 - Optimal image resolution and proportions for each breakpoint
 - Lazy-loading of `<img>` and background images; `noscript` fallback
-- 2 levels of compression quality, high quality version loaded asynchroneously - initialized on lazy-load, and displayed when downloaded.
+- 2 levels of compression quality, high quality version loaded asynchroneously - initiated on lazy-load, and displayed when downloaded.
 - Browser support detection (`.webp` and JS) and fallback on `.jpg`/`.png` versions
 - Critical CSS inlined, non-critical deferred (with fallback for browsers that don't support `preload`)
 - Text file compression (gzip)

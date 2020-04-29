@@ -2,7 +2,7 @@
     landing.scss
 ================================================================*/
 
-// ------------------ background ---------------------
+// --------------- background images ------------------
 
 // webp no supported
 .no-webp .landing {
@@ -111,6 +111,7 @@
 }
 
 // ---------------------------------------------------------------
+
 .landing {
 	position: relative;
 	height: 100vh;
@@ -147,8 +148,12 @@
 	@include position(absolute, $top: 30%);
 	width: 90%;
 
+	.logo {
+		margin-bottom: 5px;
+	}
+
 	.hero-logo-img {
-		max-width: 200px;
+		max-width: 170px;
 		transition: opacity 300ms ease;
 
 		$shadow: drop-shadow(0 0 1px rgba(0, 0, 0, 1));
@@ -165,31 +170,38 @@
 	.hero-title {
 		span {
 			line-height: 1.1;
-			font-size: 100px;
+			font-size: 85px;
 			text-shadow: 0 0 2px rgba(0, 0, 0, 1);
 
-			@media (max-width: $screen-sm-min) {
-				@include font($size: 68px);
+			@media (max-width: $screen-md-max) {
+				@include font($size: 70px);
+			}
+
+			@media (max-width: $screen-sm-max) {
+				@include font($size: 55px);
+			}
+
+			@media (max-width: $screen-xs-max) {
+				display: block;
+				@include font($size: 70px);
 				text-shadow: 0 0 4px rgba(0, 0, 0, 1);
 			}
 		}
 
 		span.title-left {
-			// TEMP
-			// background-color: black;
-			font-weight: 200;
-			color: rgb(200, 200, 200);
+			color: $color-sky-light;
+			font-weight: 600;
+		}
 
-			@media (max-width: $screen-sm-min) {
-				color: $color-sky-light;
-			}
+		span.title-middle {
+			font-weight: 200;
+			font-style: italic;
+			color: $color-white;
 		}
 
 		span.title-right {
-			font-weight: 600;
-			// TEMP
-			color: $color-white;
-			// font-style: italic;
+			color: rgb(200, 200, 200);
+			font-weight: 200;
 		}
 	}
 

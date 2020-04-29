@@ -330,6 +330,19 @@
     [Full Height Column]
 ----------------------------------------------------*/
 
+.col-full-height-sm {
+	margin-top: 50px;
+
+	@media (min-width: $screen-sm-min) {
+		margin-top: unset;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		display: flex;
+		align-items: center;
+	}
+}
 .col-full-height-md {
 	margin-top: 50px;
 

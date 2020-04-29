@@ -41,7 +41,7 @@
 		const prefix = row.section === "component" ? "." : "#";
 		const selector = prefix + row.section + "--" + row.element;
 		const els = document.querySelectorAll(selector);
-		const val = row[lang].replace(/\\n/gm, "<br>");
+		const val = row[lang].replace(/(?:\r\n|\r|\n)/g, "<br>").replace("’", "'");
 		if (els.length > 0)
 			els.forEach(function (el) {
 				if (el.nodeName === "INPUT" || el.nodeName == "TEXTAREA") {

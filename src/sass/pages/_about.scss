@@ -3,10 +3,59 @@
 ================================================================*/
 
 .about {
-	.container {
+	min-height: 80vh;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-items: center;
+	justify-content: center;
+
+	.about-main {
 		position: relative;
 	}
 
+	@media all and (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+		.container {
+			padding-left: 50px;
+			padding-right: 50px;
+		}
+	}
+
+	@media all and (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+		.container {
+			width: 100%;
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+	}
+
+	@media all and (min-width: $screen-lg-min) {
+		.container {
+			padding-left: 50px;
+			padding-right: 50px;
+		}
+
+		.about-heading {
+			margin-bottom: 40px;
+		}
+
+		.about-text-col {
+			padding-right: 70px;
+		}
+
+		.about-subheading {
+			margin-bottom: 30px;
+		}
+		.about-p {
+			font-size: 17px;
+			margin-bottom: 25px;
+		}
+	}
+
+	.first-p {
+		text-indent: 1.6em;
+	}
+
+	// IE only
 	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 		.about-img {
 			width: 100%;

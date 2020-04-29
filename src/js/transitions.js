@@ -2,9 +2,10 @@
 	"use strict";
 
 	const IMG_PEEK_THRESHOLD = 70;
-	const PARALLAX_PEEK_THRESHOLD = -250;
 	const HEADER_OFFSET_THRESHOLD = 70;
 	const LAZYLOAD_THRESHOLD = -500;
+	const PARALLAX_PEEK_THRESHOLD = -250;
+	const PARALLAX_MIN_WIDTH = 768;
 
 	const rellax = new Rellax(".parallax");
 
@@ -12,11 +13,36 @@
 	const hero = document.querySelector(".hero");
 	const parallax = document.querySelector(".parallax-container");
 	const images = document.querySelectorAll(".js-on-scroll");
+	const aboutSection = document.querySelector(".js-about");
 	var lazy = document.querySelectorAll(".lazy");
 
-	var headerHeight = header.offsetHeight;
+	var headerHeight = 0;
+	var windowWidth = 0;
 
 	// ---------------------------------------------------------------------
+
+	function updateWindowWidth() {
+		windowWidth =
+			window.innerWidth ||
+			document.documentElement.clientWidth ||
+			document.body.clientWidth;
+	}
+
+	function updateHeaderHeight() {
+		headerHeight = header.offsetHeight;
+	}
+
+	function limitAboutSectionHeight() {
+		console.log(windowWidth);
+		console.log(aboutSection);
+		if (windowWidth > 2100) {
+			aboutSection.style.height = "830px";
+			aboutSection.style.minHeight = "0";
+		} else {
+			aboutSection.style.height = null;
+			aboutSection.style.minHeight = null;
+		}
+	}
 
 	// threshold < 0 --> image near viewports
 	function isPeekingIntoViewport(img, threshold) {
@@ -33,12 +59,15 @@
 		else document.body.classList.remove("page-on-scroll");
 	}
 
-	// disable parallax when not in view
+	// disable parallax when not in view or on mobile
 	function toggleParallax() {
-		if (isPeekingIntoViewport(parallax, PARALLAX_PEEK_THRESHOLD)) {
-			rellax.refresh();
-		} else {
+		if (
+			windowWidth < PARALLAX_MIN_WIDTH ||
+			!isPeekingIntoViewport(parallax, PARALLAX_PEEK_THRESHOLD)
+		) {
 			rellax.destroy();
+		} else {
+			rellax.refresh();
 		}
 	}
 
@@ -102,10 +131,15 @@
 	// ---------------------------------------------------------------------
 
 	window.addEventListener("scroll", debounceScroll);
-	window.addEventListener("resize", function () {
-		headerHeight = header.offsetHeight;
+	window.addEventListener("resize", function (e) {
+		updateHeaderHeight();
+		updateWindowWidth();
+		toggleParallax();
+		limitAboutSectionHeight();
 	});
 
+	updateHeaderHeight();
+	updateWindowWidth();
 	debounceScroll();
 
 	setTimeout(function () {
