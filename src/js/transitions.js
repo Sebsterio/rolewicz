@@ -33,8 +33,6 @@
 	}
 
 	function limitAboutSectionHeight() {
-		console.log(windowWidth);
-		console.log(aboutSection);
 		if (windowWidth > 2100) {
 			aboutSection.style.height = "830px";
 			aboutSection.style.minHeight = "0";
