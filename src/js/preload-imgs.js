@@ -2,10 +2,11 @@
 // Replace each compressed original when high-res version loaded
 (function () {
 	// Download hq image and run callback when done
-	function preloadImage(url, imageLoadedCallback) {
+	function preloadImage(url, imageLoadedCallback, imgErrorCallback) {
 		var img = new Image();
-		img.onload = imageLoadedCallback;
 		img.src = url;
+		img.onload = imageLoadedCallback;
+		img.onerror = imgErrorCallback;
 	}
 
 	window.preloadImages = function (imgs) {
@@ -33,14 +34,20 @@
 			if (!url.includes(".webp")) return;
 
 			const hqUrl = url
-				.replace('url("', "")
-				.replace('")', "")
+				.replace(/url\("?/, "")
+				.replace(/"?\)/, "")
 				.replace(".webp", ".hq.webp");
 
-			preloadImage(hqUrl, function () {
-				// Update image quality when hq version has loaded
-				bg.style.backgroundImage = 'url("' + hqUrl + '")';
-			});
+			preloadImage(
+				hqUrl,
+				function () {
+					// Update image quality when hq version has preloaded
+					bg.style.backgroundImage = 'url("' + hqUrl + '")';
+				},
+				function (error) {
+					console.log(error);
+				}
+			);
 		});
 	};
 
