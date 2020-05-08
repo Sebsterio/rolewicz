@@ -148,6 +148,10 @@
 	@include position(absolute, $top: 30%);
 	width: 90%;
 
+	@media (max-width: $screen-xs-max) {
+		@include position(absolute, $top: 28%);
+	}
+
 	.logo {
 		margin-bottom: 5px;
 	}
@@ -208,6 +212,7 @@
 	.slogan {
 		margin-top: 20px;
 		color: $color-subtitle;
+		text-shadow: 0 0 2px rgba(0, 0, 0, 1);
 	}
 }
 
