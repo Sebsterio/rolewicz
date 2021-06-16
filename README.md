@@ -70,3 +70,7 @@ Detect critical CSS:
 
 - `$ npm run critical`
 - Paste landinge-page-related CSS into `index.html` manually
+
+# Deployment
+
+Manually upload files
